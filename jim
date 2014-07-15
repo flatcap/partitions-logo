@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for i in $(enum -w "%03d" 0 999); do
+	cat template.svg | sed \
+		-e "s/XXXXXX/$(printf "%02x" $((RANDOM%256)))$(printf "%02x" $((RANDOM%256)))$(printf "%02x" $((RANDOM%256)))/" \
+		-e "s/YYYYYY/$(printf "%02x" $((RANDOM%256)))$(printf "%02x" $((RANDOM%256)))$(printf "%02x" $((RANDOM%256)))/" \
+		-e "s/ZZZZZZ/$(printf "%02x" $((RANDOM%256)))$(printf "%02x" $((RANDOM%256)))$(printf "%02x" $((RANDOM%256)))/" \
+		-e "s/QQQQQQ/$(printf "%02x" $((RANDOM%256)))$(printf "%02x" $((RANDOM%256)))$(printf "%02x" $((RANDOM%256)))/" > l$i.svg
+done
+
